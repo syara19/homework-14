@@ -8,10 +8,8 @@ export default function Register() {
   const router = useRouter();
   const [showPassword, setShowPassword] = useState(false);
 
-
   const submitHandler = async (e) => {
     e.preventDefault();
- 
 
     try {
       const data = await register({
@@ -22,58 +20,62 @@ export default function Register() {
       router.push("/login");
     } catch (error) {
       console.log(error.message);
-     
     }
   };
 
   return (
-    <div className="flex min-h-full flex-1 flex-col items-center  justify-center px-6 py-12 lg:px-8">
-      <div className="w-full  bg-white  md:mt-0 sm:max-w-md xl:p-0 ">
-        <h1 className="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl ">
-          Register
-        </h1>
-
-        <form onSubmit={submitHandler} className="space-y-4 mt-10 md:space-y-6">
-          <label
-            className="block mb-2 text-sm font-medium text-gray-900 "
-            htmlFor="name"
-          >
-            Name
-          </label>
-          <input
-            className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 "
-            placeholder="name@company.com"
-            type="text"
-            name="name"
-          />
-          <label
-            className="block mb-2 text-sm font-medium text-gray-900 "
-            htmlFor="email"
-          >
-            Email
-          </label>
-          <input
-            className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
-            placeholder="name@company.com"
-            type="email"
-            name="email"
-          />
-          <label
-            className="block mb-2 text-sm font-medium text-gray-900 "
-            htmlFor="password"
-          >
-            Password
-          </label>
-          <input
-            className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
-            placeholder="name@company.com"
-            type={showPassword ? 'text' : 'password'}
-            name="password"
-          />
-          <button onClick={(e) => setShowPassword(!showPassword)}>{showPassword? "Hide" : "Show"}</button>
-          <br/>
-          <button type="submit">Register</button>
-        </form>
+    <div className="hero min-h-screen bg-base-200">
+      <div className="hero-content flex-col lg:flex-row-reverse ">
+        <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
+          <div className="card-body">
+            <form onSubmit={submitHandler}>
+              <div className="form-control">
+                <label className="label" htmlFor="name">
+                  <span className="label-text">Name</span>
+                </label>
+                <input
+                  className="input input-bordered "
+                  placeholder="name"
+                  type="text"
+                  name="name"
+                />
+              </div>
+              <div className="form-control">
+                <label className="label" htmlFor="email">
+                  <span className="label-text">Email</span>
+                </label>
+                <input
+                  className="input input-bordered "
+                  placeholder="email"
+                  type="email"
+                  name="email"
+                />
+              </div>
+              <div className="form-control">
+                <label className="label" htmlFor="password">
+                  <span className="label-text">Password</span>
+                </label>
+                <input
+                  className="input input-bordered "
+                  placeholder="password"
+                  type="password"
+                  name="password"
+                />
+              </div>
+              <label className="label">
+                <a
+                  href="https://localhost:3000/login"
+                  className="label-text-alt link link-hover"
+                >
+                  Have an account?
+                </a>
+              </label>
+              <div className="form-control mt-6">
+                <button className="btn btn-primary">Login</button>
+              </div>
+            </form>
+          </div>
+        </div>
       </div>
     </div>
   );

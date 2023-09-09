@@ -14,16 +14,24 @@ const getBooks = async () => {
 
 const getBookDetail = async (id) => {
   try {
-    const book = await prisma.book.findUnique({
-      where: {
-        id,
-      },
-    });
+    // const book = await prisma.book.findUnique({
+    //   where: {
+    //     id,
+    //   },
+    // });
 
-    if (!book) {
-      throw new Error("Book not found");
-    }
-    return book;
+    // if (!book) {
+    //   throw new Error("Book not found");
+    // }
+    // return book;
+    const res = await fetch(`http://localhost:3000/api/books/${id}`, {
+      method: "GET",
+      body: JSON.stringify({}),
+      
+    });
+    const data = await res.json();
+    console.log(data, "<<<<");
+    return data;
   } catch (error) {
     console.log(error);
   }
@@ -45,4 +53,4 @@ const deleteBook = async (id) => {
   }
 };
 
-export { getBooks, getBookDetail,deleteBook };
+export { getBooks, getBookDetail, deleteBook };

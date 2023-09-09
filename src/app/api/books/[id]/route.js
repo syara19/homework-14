@@ -37,3 +37,17 @@ export async function DELETE(req, { params }) {
     return NextResponse.error(`Error: ${error.message}`, 500);
   }
 }
+export async function GET(req,{params}){
+  const {id} = params
+
+  try {
+    const book = await prisma.book.findUnique({
+      where:{
+        id:Number(id)
+      }
+    })
+    return NextResponse.json(book, { status: 200 });
+  } catch (error) {
+    return NextResponse.error(`Error: ${error.message}`,500)
+  }
+}

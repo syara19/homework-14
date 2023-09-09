@@ -49,8 +49,8 @@ export default function Login() {
                   className="input input-bordered"
                 />
                 <label className="label">
-                  <a href="#" className="label-text-alt link link-hover">
-                    Forgot password?
+                  <a href="https://localhost:3000/register" className="label-text-alt link link-hover">
+                    Dont have an account?
                   </a>
                 </label>
               </div>
