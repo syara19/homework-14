@@ -2,6 +2,7 @@
 
 import { useRouter } from "next/navigation";
 import { login } from "../fetching/auth";
+import Link from "next/link";
 
 export default function Login() {
   const router = useRouter();
@@ -14,14 +15,14 @@ export default function Login() {
         password: e.target.password.value,
       });
 
-      router.push("/")
+      router.push("/");
     } catch (error) {
       throw new Error(error);
     }
   };
 
   return (
-    <div className="hero min-h-screen bg-base-200">
+    <div className="hero min-h-screen ">
       <div className="hero-content flex-col lg:flex-row-reverse">
         <div className="text-center lg:text-left"></div>
         <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
@@ -49,9 +50,12 @@ export default function Login() {
                   className="input input-bordered"
                 />
                 <label className="label">
-                  <a href="https://localhost:3000/register" className="label-text-alt link link-hover">
+                  <Link
+                    className="label-text-alt link link-hover"
+                    href={"/register"}
+                  >
                     Dont have an account?
-                  </a>
+                  </Link>
                 </label>
               </div>
               <div className="form-control mt-6">

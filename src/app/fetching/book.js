@@ -1,3 +1,4 @@
+import { instance } from "@/lib/axios";
 import prisma from "@/lib/prisma";
 
 const getBooks = async () => {
@@ -14,36 +15,12 @@ const getBooks = async () => {
 
 const getBookDetail = async (id) => {
   try {
-    // const book = await prisma.book.findUnique({
-    //   where: {
-    //     id,
-    //   },
-    // });
-
-    // if (!book) {
-    //   throw new Error("Book not found");
-    // }
-    // return book;
-    const res = await fetch(`http://localhost:3000/api/books/${id}`, {
-      method: "GET",
-      body: JSON.stringify({}),
-      
-    });
-    const data = await res.json();
-    console.log(data, "<<<<");
-    return data;
-  } catch (error) {
-    console.log(error);
-  }
-};
-
-const deleteBook = async (id) => {
-  try {
-    const book = await prisma.book.delete({
+    const book = await prisma.book.findUnique({
       where: {
         id,
       },
     });
+    console.log(book, "<<book detail");
     if (!book) {
       throw new Error("Book not found");
     }
@@ -53,4 +30,31 @@ const deleteBook = async (id) => {
   }
 };
 
-export { getBooks, getBookDetail, deleteBook };
+const deleteBook = async (id) => {
+  try {
+    const res = await fetch(`http://localhost:3000/api/books/${id}`, {
+      method: "DELETE",
+    });
+    console.log(res,"<<<query")
+    return res;
+  } catch (error) {
+    console.log(error);
+    throw new Error(error)
+  }
+};
+
+const create = async (formData) => {
+  try {
+    const res = await fetch("http://localhost:3000/api/books", {
+      method: "POST",
+      body: formData,
+    });
+
+    return res;
+  
+  } catch (error) {
+    console.log(error)
+  }
+};
+
+export { getBooks, getBookDetail, deleteBook, create };

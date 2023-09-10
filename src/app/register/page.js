@@ -3,6 +3,7 @@
 import { useRouter } from "next/navigation";
 import { register } from "../fetching/auth";
 import { useState } from "react";
+import Link from "next/link";
 
 export default function Register() {
   const router = useRouter();
@@ -24,7 +25,7 @@ export default function Register() {
   };
 
   return (
-    <div className="hero min-h-screen bg-base-200">
+    <div className="hero min-h-screen">
       <div className="hero-content flex-col lg:flex-row-reverse ">
         <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
           <div className="card-body">
@@ -63,12 +64,12 @@ export default function Register() {
                 />
               </div>
               <label className="label">
-                <a
-                  href="https://localhost:3000/login"
+                <Link
+                  href={"/login"}
                   className="label-text-alt link link-hover"
                 >
                   Have an account?
-                </a>
+                </Link>
               </label>
               <div className="form-control mt-6">
                 <button className="btn btn-primary">Login</button>

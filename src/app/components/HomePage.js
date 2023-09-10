@@ -6,22 +6,22 @@ import Books from "./book/Books";
 
 export default function HomePage() {
   const [books, setBooks] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
+  // const [isLoading, setIsLoading] = useState(false);
 
   const fetchBooks = async () => {
     const data = await getBooks();
-    setIsLoading(false);
+    // setIsLoading(false);
     setBooks(data);
   };
 
   useEffect(() => {
-    setIsLoading(true);
+    // setIsLoading(true);
     fetchBooks();
   }, []);
 
   return (
-    <div className="container max-w-4xl py-10">
-      <div className="grid grid-flow-col auto-cols-max">
+    <div className="container mx-auto  px-4 py-10">
+      <div className="grid  lg:grid-cols-3 gap-16">
         {books.map((book) => (
           <div
             key={`${book.id} ${book.title}`}
