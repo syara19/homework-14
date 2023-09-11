@@ -22,48 +22,49 @@ export default function Login() {
   };
 
   return (
-    <div className="hero min-h-screen ">
-      <div className="hero-content flex-col lg:flex-row-reverse">
-        <div className="text-center lg:text-left"></div>
-        <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
-          <div className="card-body">
-            <form onSubmit={submitHandler}>
-              <div className="form-control">
-                <label className="label">
-                  <span className="label-text">Email</span>
-                </label>
-                <input
-                  name="email"
-                  type="text"
-                  placeholder="email"
-                  className="input input-bordered"
-                />
-              </div>
-              <div className="form-control">
-                <label className="label">
-                  <span className="label-text">Password</span>
-                </label>
-                <input
-                  name="password"
-                  type="text"
-                  placeholder="password"
-                  className="input input-bordered"
-                />
-                <label className="label">
-                  <Link
-                    className="label-text-alt link link-hover"
-                    href={"/register"}
-                  >
-                    Dont have an account?
-                  </Link>
-                </label>
-              </div>
-              <div className="form-control mt-6">
-                <button className="btn btn-primary">Login</button>
-              </div>
-            </form>
+    <div className="min-h-screen bg-gray-100 flex items-center justify-center">
+      <div className="max-w-md w-full mx-auto p-8 bg-white rounded-lg shadow-lg">
+        <h2 className="text-3xl text-slate-800 font-bold text-center mb-6">
+          Login
+        </h2>
+        <form onSubmit={submitHandler}>
+          <div className="mb-4">
+            <label htmlFor="email" className="block text-gray-700">
+              Email
+            </label>
+            <input
+              name="email"
+              type="email"
+              placeholder="email"
+              className="border border-gray-300 rounded-md p-2 w-full"
+            />
           </div>
-        </div>
+          <div className="mb-4">
+            <label htmlFor="password" className="block text-gray-700">
+              Password
+            </label>
+            <input
+              name="password"
+              type="password"
+              placeholder="password"
+              className="border border-gray-300 rounded-md p-2 w-full"
+            />
+          </div>
+          <div className="mb-6">
+            <button
+              type="submit"
+              className="w-full bg-blue-500 text-white rounded-md py-2"
+            >
+              Login
+            </button>
+          </div>
+          <p className="text-center">
+            Dont have an account?
+            <Link href="/register" className="text-blue-500">
+              Click here to register
+            </Link>
+          </p>
+        </form>
       </div>
     </div>
   );
