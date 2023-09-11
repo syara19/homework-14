@@ -1,6 +1,8 @@
+// "use client"
 import { cookies } from "next/headers";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
+import LogoutButton from "../LogoutButton";
 
 export default function Navbar() {
   const cookie = cookies();
@@ -31,15 +33,15 @@ export default function Navbar() {
                 create book
              
             </Link>
+            <LogoutButton/>
 
-            <button  className="btn btn-ghost btn-sm">
+            {/* <button onClick={()=> cookies.delete("accessToken")} className="btn btn-ghost btn-sm">
               Logout
-            </button>
+            </button> */}
           </div>
         ) : (
           <Link href={"/login"}><button
             className="btn btn-ghost btn-sm"
-            // onClick={() => router.push("/login")}
           >
             login
           </button></Link>
