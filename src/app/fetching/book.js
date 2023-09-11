@@ -35,11 +35,11 @@ const deleteBook = async (id) => {
     const res = await fetch(`http://localhost:3000/api/books/${id}`, {
       method: "DELETE",
     });
-    console.log(res,"<<<query")
+    console.log(res, "<<<query");
     return res;
   } catch (error) {
     console.log(error);
-    throw new Error(error)
+    throw new Error(error);
   }
 };
 
@@ -51,10 +51,19 @@ const create = async (formData) => {
     });
 
     return res;
-  
   } catch (error) {
-    console.log(error)
+    console.log(error);
   }
 };
 
-export { getBooks, getBookDetail, deleteBook, create };
+const editBook = async (id, title, author, pages, year) => {
+  try {
+    const res = await fetch(`http://localhost:3000/api/books/${id}`, {
+      method: "PUT",
+    });
+  } catch (error) {
+    throw new Error(error)
+  }
+};
+
+export { getBooks, getBookDetail, deleteBook, create, editBook };
