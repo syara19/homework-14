@@ -1,3 +1,5 @@
+import { cookies } from "next/headers";
+import AuthStore from "./components/Auth";
 import Navbar from "./components/navbar";
 import "./globals.css";
 import { Inter } from "next/font/google";
@@ -10,9 +12,13 @@ export const metadata = {
 };
 
 export default function RootLayout({ children }) {
+  const cookieStore = cookies();
+  const accessToken = cookieStore.get("accessToken");
+
   return (
     <html lang="en">
       <body className={`${inter.className} bg-white`}>
+        <AuthStore isAuth={accessToken} />
         <Navbar />
         {children}
       </body>

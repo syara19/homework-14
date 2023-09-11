@@ -7,7 +7,6 @@ import Link from "next/link";
 
 export default function Register() {
   const router = useRouter();
-  const [showPassword, setShowPassword] = useState(false);
 
   const submitHandler = async (e) => {
     e.preventDefault();

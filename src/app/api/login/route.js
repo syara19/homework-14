@@ -36,11 +36,11 @@ export async function POST(req) {
     );
 
     cookies().set({
-      name: "access_token",
+      name: "accessToken",
       value: accessToken,
       maxAge: 60 * 60 * 24 * 7,
     });
-
+    
     return NextResponse.json(
       {
         id: foundUser.id,
